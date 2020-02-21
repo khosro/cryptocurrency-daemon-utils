@@ -1,0 +1,23 @@
+>
+>
+> geth --datadir node1/ init .puppeth\devnet
+INFO [09-20|19:42:12.387] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [09-20|19:42:12.500] Allocated cache and file handles         database="\\devnet\\node1\\geth\\chaindata" cache=16.00MiB handles=16
+INFO [09-20|19:42:12.546] Writing custom genesis block
+INFO [09-20|19:42:12.565] Persisted trie from memory database      nodes=358 size=51.05KiB time=3.97ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [09-20|19:42:12.587] Successfully wrote genesis state         database=chaindata hash=5c9179…c64890
+INFO [09-20|19:42:12.595] Allocated cache and file handles         database="\\devnet\\node1\\geth\\lightchaindata" cache=16.00MiB handles=16
+INFO [09-20|19:42:12.645] Writing custom genesis block
+INFO [09-20|19:42:12.670] Persisted trie from memory database      nodes=358 size=51.05KiB time=1.9995ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [09-20|19:42:12.698] Successfully wrote genesis state         database=lightchaindata hash=5c9179…c64890
+
+> geth --datadir node2/ init .puppeth\devnet
+INFO [09-20|19:42:23.124] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [09-20|19:42:23.241] Allocated cache and file handles         database="\\devnet\\node2\\geth\\chaindata" cache=16.00MiB handles=16
+INFO [09-20|19:42:23.282] Writing custom genesis block
+INFO [09-20|19:42:23.300] Persisted trie from memory database      nodes=358 size=51.05KiB time=4.005ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [09-20|19:42:23.323] Successfully wrote genesis state         database=chaindata hash=5c9179…c64890
+INFO [09-20|19:42:23.330] Allocated cache and file handles         database="\\devnet\\node2\\geth\\lightchaindata" cache=16.00MiB handles=16
+INFO [09-20|19:42:23.372] Writing custom genesis block
+INFO [09-20|19:42:23.390] Persisted trie from memory database      nodes=358 size=51.05KiB time=1.9992ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [09-20|19:42:23.412] Successfully wrote genesis state         database=lightchaindata hash=5c9179…c64890

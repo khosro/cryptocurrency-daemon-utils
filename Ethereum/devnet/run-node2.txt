@@ -1,0 +1,15 @@
+ 
+ 
+ geth --datadir node2/ --syncmode "full" --port 30312 --rpc --rpcaddr "localhost" --rpcport 8502 --rpcapi "personal,db,eth,net,web3,txpool,miner" --bootnodes "enode://438d99ddf6ed524be98936ed811630a6487c91d7b7e8fcd244b1b49c114801162ce93b206ee69180b7aa5b2afe47ff8c08461fdd0e1b73f69fa8c2c1a9938c39@127.0.0.1:0?discport=30310" --networkid 2483 --gasprice "0" -unlock "0x8c3aa059ed7358fdeb98c65c54beb2a470b4c74b" --password node2/password.txt --mine --allow-insecure-unlock --ipcpath "node2/geth.ipc"
+ 
+ --verbosity 0 console  
+  --ipcdisable
+ 
+ 
+ 
+ 
+add   because of Fatal: Error starting protocol stack: Access is denied. #14438
+Refer to https://github.com/ethereum/go-ethereum/issues/14438 and https://github.com/ethereum/go-ethereum/issues/1714
+
+
+
