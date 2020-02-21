@@ -1,7 +1,5 @@
-bitcoin/data
 bitcoin/bitcoind
 btcpayserver/NBXplorer/data
-litecoin/data
 litecoin/litecoind
 Ethereum/bin
 Ethereum/devnet/node1/geth
