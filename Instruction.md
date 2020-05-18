@@ -4,10 +4,10 @@
 git clone https://github.com/khosro/cryptocurrency-daemon-utils
 ```
 
-Specify ```BtcPay_Src``` and ```BasePath```. ```BasePath``` is the root folder path of this project.
+Specify ```BtcPay_Src``` and ```BasePath```. ```BasePath``` is the path of this project.
 And also in ```BasePath```, all softwares located in its home directory with bin folder that contains daemon .For example bitcoin core located in ```%BitCoin_Home%``` and in ```%BitCoin_Home%``` we have a ```bin``` folder that contains bitcoin core daemon(bitcoind.exe).The same applied for all other softwares.
 
-```BtcPay_Src``` is the root folder that contains source code of ```btcpayserver``` and ```NBXplorer```. And these projects must be in the same root folder.
+```BtcPay_Src``` is the folder that contains source code of ```btcpayserver``` and ```NBXplorer```. And these projects must be in the same folder.
 
 Then Extract the content of cryptocurrency-daemon-utils_daemon.zip to root of project. You can download it from https://drive.google.com/file/d/1cPl0MT4lhJIbE2duRvEkEygw0h4q2vEF/view?usp=sharing
 
@@ -22,6 +22,12 @@ setx   Ethereum_Home        "<BasePath>\Ethereum"
 
 setx   LiteCoin_Data_Home   "<BasePath>\litecoin"
 setx   LiteCoin_Home        "<BasePath>\litecoin\litecoind"
+```
+
+##### NOTICE : It seems Dogecoin does not work in Regtest (Refer to "dogecoin/README.md").
+```
+setx   Dogecoin_Data_Home   "<BasePath>\dogecoin"
+setx   Dogecoin_Home        "<BasePath>\dogecoin\dogecoind"
 ```
 
 ```

@@ -9,4 +9,4 @@ rem --conf="%Btcpay_Data_Home%\NBXplorer\NBXplorer.config"   -regtest --chains "
 
 rem --datadir "%Btcpay_Data_Home%\NBXplorer\data" %*
 
-cmd /k
+rem cmd /k
