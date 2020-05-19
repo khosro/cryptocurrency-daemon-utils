@@ -22,6 +22,16 @@ setx   Ethereum_Home        "<BasePath>\Ethereum"
 
 setx   LiteCoin_Data_Home   "<BasePath>\litecoin"
 setx   LiteCoin_Home        "<BasePath>\litecoin\litecoind"
+
+setx   BitcoinGold_Data_Home   "<BasePath>\bgold"
+setx   BitcoinGold_Home        "<BasePath>\bgold\bgoldd"
+
+```
+
+##### NOTICE : It seems Monacoin does not work in Regtest.
+```
+setx   Mona_Data_Home   "<BasePath>\monacoin"
+setx   Mona_Home        "<BasePath>\monacoin\monacoind"
 ```
 
 ##### NOTICE : It seems Dogecoin does not work in Regtest (Refer to "dogecoin/README.md").

@@ -1,7 +1,9 @@
 bitcoin/bitcoind
 btcpayserver/NBXplorer/data
 litecoin/litecoind
-dogecoin/dogecoind
 Ethereum/bin
 Ethereum/devnet/node1/geth
 Ethereum/devnet/node2/geth
+monacoin/monacoind
+dogecoin/dogecoind
+bgold/bgoldd
