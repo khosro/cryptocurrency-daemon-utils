@@ -1,1 +1,0 @@
- docker ps --format "{{.ID}}  {{.Command}}    {{.Names}}          {{.Image}}"
