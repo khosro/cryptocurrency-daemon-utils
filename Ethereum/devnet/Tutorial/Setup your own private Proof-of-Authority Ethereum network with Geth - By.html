@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)https://hackernoon.com/setup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="icon" type="image/png" href="https://hackernoon.com/favicon.png">
+  <link rel="canonical" href="https://hackernoon.com/setup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8">
+  <link rel="icon" type="image/png" href="https://hackernoon.com/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup your own private Proof-of-Authority Ethereum network with Geth - By </title>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@hackernoon">
+  
+  <meta name="twitter:creator" content="@ethervolution">
+  
+  <meta property="og:url" content="https://hackernoon.com/setup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8">
+  <meta property="og:title" content="Setup your own private Proof-of-Authority Ethereum network with Geth">
+  
+  <meta property="og:image" content="https://hackernoon.com/hn-images/1*2DQn4a4Ni5QwzclsUgSJqQ.jpeg">
+  
+
+  <link rel="stylesheet" href="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/all.css" integrity="sha384-6jHF7Z3XI3fF4XZixAuSu0gGKrXwoX/w3uFPxC56OtjChio7wtTGJWRW53Nhx6Ev" crossorigin="anonymous">
+  <link href="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/base.css" rel="stylesheet">
+  <link href="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/story.css" rel="stylesheet">
+  <link href="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/prism.css" rel="stylesheet">
+  <link href="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/subscribe-form.css" rel="stylesheet">
+
+  <script type="text/javascript" async="" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/analytics.js.download"></script><script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/vue.min.js.download"></script>
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/content.js.download"></script>
+<style type="text/css">#mc_embed_signup input.mce_inline_error { border-color:#6B0505; } #mc_embed_signup div.mce_inline_error { margin: 0 0 1em 0; padding: 5px 10px; background-color:#6B0505; font-weight: bold; z-index: 1; color:#fff; }</style></head>
+
+<body>
+  <div id="root">
+    <header id="header"><nav><a href="https://hackernoon.com/"><img src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/logo-hn.png" height="40" class="logo"></a> <div class="desktop-nav"><div class="spacer"></div> <div class="search-container"><input class="search-input"> <i class="fas fa-search"></i></div> <a href="https://twitter.com/hackernoon" target="_blank"><i class="fab fa-twitter"></i></a> <a href="https://www.facebook.com/hackernoon" target="_blank"><i class="fab fa-facebook-f"></i></a> <a href="https://www.youtube.com/hackernoon" target="_blank"><i class="fab fa-youtube"></i></a> <a href="https://hackernoon.com/setup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8#subscribe-embed"><button class="outline">Subscribe</button></a> <!----> <!----></div></nav></header>
+
+    <div id="top"><div class="subnav"><a href="https://hackernoon.com/tagged/cryptocurrency">Crypto / Blockchain</a> <a href="https://hackernoon.com/tagged/coding">Coding</a> <a href="https://hackernoon.com/tagged/artificial-intelligence">A.I.</a> <a href="https://hackernoon.com/tagged/futurist">Futurism</a> <a href="https://hackernoon.com/tagged/startups">Startups</a> <a target="_blank" href="https://hackernoon.com/hacker-noon-faqs-with-six-word-answers-aw1ls3z1q">About</a> <a href="https://podcast.hackernoon.com/">Podcast</a> <a href="https://community.hackernoon.com/">Community</a> <div class="dropdown"><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/artificial-intelligence">Artificial Intelligence</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/data-science">Data Science</a></li><li><a href="https://hackernoon.com/tagged/deep-fakes">Deep Fakes</a></li><li><a href="https://hackernoon.com/tagged/deep-learning">Deep Learning</a></li><li><a href="https://hackernoon.com/tagged/machine-learning">Machine Learning</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://community.hackernoon.com/categories">Browse by Category</a></div> <ul class="links"><li><a href="https://community.hackernoon.com/">Start a Discussion!</a></li><li><a href="https://community.hackernoon.com/c/ama">AMA</a></li><li><a href="https://community.hackernoon.com/c/code-pong">Code Pong</a></li><li><a href="https://community.hackernoon.com/c/crypto">Crypto</a></li><li><a href="https://community.hackernoon.com/c/editorial">Editorial</a></li><li><a href="https://community.hackernoon.com/c/general">General</a></li><li><a href="https://community.hackernoon.com/c/product">Product</a></li><li><a href="https://community.hackernoon.com/c/podcast">Podcast</a></li><li><a href="https://community.hackernoon.com/c/random">Random</a></li><li><a href="https://community.hackernoon.com/c/Software-Development">Software Development</a></li><li><a href="https://community.hackernoon.com/c/technology">Technology</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="https://community.hackernoon.com/top">Top Discussions</a></div> <ul class="links"><li><a href="https://community.hackernoon.com/top/daily">Daily</a></li><li><a href="https://community.hackernoon.com/top/weekly">Weekly</a></li><li><a href="https://community.hackernoon.com/top/monthly">Monthly</a></li><li><a href="https://community.hackernoon.com/top/quarterly">Quarterly</a></li><li><a href="https://community.hackernoon.com/top/yearly">Yearly</a></li><li><a href="https://community.hackernoon.com/top/all">All Time</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/setup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8#">Coins</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/bitcoin">Bitcoin</a></li><li><a href="https://hackernoon.com/tagged/ethereum">Ethereum</a></li><li><a href="https://hackernoon.com/tagged/ripple">Ripple</a></li><li><a href="https://hackernoon.com/tagged/cryptocurrency">More</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/blockchain">Blockchain</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/blockchain-adoption">Adoption</a></li><li><a href="https://hackernoon.com/tagged/blockchain-application">Application</a></li><li><a href="https://hackernoon.com/tagged/blockchain-development">Development</a></li><li><a href="https://hackernoon.com/tagged/smart-contracts">Smart Contracts</a></li><li><a href="https://hackernoon.com/tagged/blockchain-technology">Technology</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="http://help.hackernoon.com/">Get Help</a></div> <ul class="links"><li><a href="https://help.hackernoon.com/app/page/1fWmAG6zSc-EuxBhHYt-tUIR0wfefRxkmpVRD46byKTw">Account Creation Troubleshooting</a></li><li><a href="https://t.sidekickopen80.com/s1t/c/5/f18dQhb0S7lM8dDMPbW2n0x6l2B9nMJN7t5XWPdSD1CVRs8Z42z8PNzTzGpw63MNl0103?t=https%3A%2F%2Fhelp.hackernoon.com%2Fapp%2Fpage%2F1lDCt9BDTNOQDV7XsOchDBXsmnicvdwa8hw5EFopkDS4&amp;si=8000000000817720&amp;pi=4757d00e-256a-4699-bab5-e8d69432546a">Connect Medium to Hackernoon</a></li><li><a href="https://help.hackernoon.com/app/page/1lDCt9BDTNOQDV7XsOchDBXsmnicvdwa8hw5EFopkDS4">Create Your Own CTA</a></li><li><a href="https://help.hackernoon.com/app/page/1uNH9LJ9-2lFUukcceNjYeguF3QgT4RZhhMP0XZFktpk">Medium Transition FAQ</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="http://contribute.hackernoon.com/">Start Writing</a></div> <ul class="links"><li><a href="https://t.sidekickopen80.com/s1t/c/5/f18dQhb0S7lM8dDMPbW2n0x6l2B9nMJN7t5XWPdSD1CVRs8Z42z8PNzTzGpw63MNl0103?t=https%3A%2F%2Fhelp.hackernoon.com%2Fapp%2Fpage%2F1lDCt9BDTNOQDV7XsOchDBXsmnicvdwa8hw5EFopkDS4&amp;si=8000000000817720&amp;pi=4757d00e-256a-4699-bab5-e8d69432546a">Complete Writing Guide</a></li><li><a href="https://t.sidekickopen80.com/s1t/c/5/f18dQhb0S7lM8dDMPbW2n0x6l2B9nMJN7t5XWPdSD1CVRs8Z42z8PNzTzGpw63MNl0103?t=https%3A%2F%2Fhelp.hackernoon.com%2Fapp%2Fpage%2F1lDCt9BDTNOQDV7XsOchDBXsmnicvdwa8hw5EFopkDS4&amp;si=8000000000817720&amp;pi=4757d00e-256a-4699-bab5-e8d69432546a">Submit a Story</a></li><li><a href="https://t.sidekickopen80.com/s1t/c/5/f18dQhb0S7lM8dDMPbW2n0x6l2B9nMJN7t5XWPdSD1CVRs8Z42z8PNzTzGpw63MNl0103?t=https%3A%2F%2Fhelp.hackernoon.com%2Fapp%2Fpage%2F1lDCt9BDTNOQDV7XsOchDBXsmnicvdwa8hw5EFopkDS4&amp;si=8000000000817720&amp;pi=4757d00e-256a-4699-bab5-e8d69432546a">Write Better Headlines</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="http://help.hackernoon.com/">Sponsors</a></div> <ul class="links"><li><a href="https://sponsor.hackernoon.com/#brandasauthor">Brand As Author</a></li><li><a href="https://sponsor.hackernoon.com/#billboard">Sitewide Billboard</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/technology-trends">Effect of Tech</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/automation">Automation</a></li><li><a href="https://hackernoon.com/tagged/big-data">Big Data</a></li><li><a href="http://hackernoon.com/tagged/economics">Economics</a></li><li><a href="https://hackernoon.com/tagged/future">Future</a></li><li><a href="https://hackernoon.com/tagged/robotics">Robotics</a></li><li><a href="https://hackernoon.com/tagged/space">Space</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="https://www.startengine.com/hackernoon">Framing Realities</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/augmented-reality">Augmented Reality</a></li><li><a href="https://hackernoon.com/tagged/mixed-reality">Mixed Reality</a></li><li><a href="https://hackernoon.com/open-letters/home">Open Tech Letters</a></li><li><a href="https://hackernoon.com/tagged/virtual-reality">Virtual Reality</a></li><li><a href="https://hackernoon.com/tagged/wtf">WTF</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/startup-advice">Startups Advice</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/entrepreneurship">Entrepreneurship</a></li><li><a href="https://hackernoon.com/tagged/funding">Funding</a></li><li><a href="https://hackernoon.com/tagged/marketing">Marketing</a></li><li><a href="https://hackernoon.com/tagged/pitching">Pitching</a></li><li><a href="https://hackernoon.com/tagged/scaling">Scaling</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/faagm">FAAGM</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/facebook">Facebook</a></li><li><a href="https://hackernoon.com/tagged/amazon">Amazon</a></li><li><a href="https://hackernoon.com/tagged/apple">Apple</a></li><li><a href="https://hackernoon.com/tagged/google">Google</a></li><li><a href="https://hackernoon.com/tagged/microsoft">Microsoft</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://podcast.hackernoon.com/">Podcast</a></div> <ul class="links"><li><a href="https://podcasts.apple.com/us/podcast/hacker-noon-podcast/id1436233955">iTunes</a></li><li><a href="https://play.google.com/music/listen?u=0#/ps/Iy3btdr7spqcih5fheglsxdymie">Google Play</a></li><li><a href="http://hackernoon.video/">Youtube</a></li><li><a href="https://hackernoonpodcast.paperform.co/">Nominate a Guest</a></li><li><a href="https://sponsor.hackernoon.com/#podcast">Become a Sponsor</a></li><li><a href="https://hackernoon.com/tagged/podcast">Discover More Tech Podcasts</a></li></ul></div></div><div class="category"><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/engineering">Engineering</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/architecture">Architecture</a></li><li><a href="https://hackernoon.com/tagged/coding">Coding</a></li><li><a href="https://hackernoon.com/tagged/programming">Programming</a></li><li><a href="https://hackernoon.com/tagged/engineering-management">Engineering Management</a></li><li><a href="https://hackernoon.com/tagged/software-development">Software Development</a></li><li><a href="https://hackernoon.com/tagged/agile">Agile</a></li><li><a href="https://hackernoon.com/tagged/scrum">Scrum</a></li><li><a href="https://hackernoon.com/tagged/tdd">Test Driven Development</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/languages">Languages</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/javascript">Javascript</a></li><li><a href="https://hackernoon.com/tagged/nodejs">NodeJS</a></li><li><a href="https://hackernoon.com/tagged/python">Python</a></li><li><a href="https://hackernoon.com/tagged/react">React</a></li><li><a href="https://hackernoon.com/tagged/vim">Vim</a></li></ul></div><div class="section"><div class="heading"><div class="line"></div> <a href="https://hackernoon.com/tagged/security">Security</a></div> <ul class="links"><li><a href="https://hackernoon.com/tagged/cybersecurity">Cybersecurity</a></li><li><a href="https://hackernoon.com/tagged/encryption">Encryption</a></li><li><a href="https://hackernoon.com/tagged/infosec">Info Sec</a></li><li><a href="https://hackernoon.com/tagged/privacy">Privacy</a></li></ul></div></div></div></div> <div class="ads"><a href="https://alpaca.markets/" target="_blank" class="sponsor"><img src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/alpaca-square.png" alt="Alpaca" class="image">
+          Simple REST API for $0 Trading
+          <label>#Sponsor</label></a> <a href="https://noonies.hackernoon.com/" target="_blank" class="sponsor secondary"><i class="far fa-trophy"></i>
+          The Noonies : Tech's Greenest Awards
+          <label>#Advocate</label></a></div></div>
+
+    <div class="story story-container">
+      
+      <div class="author">
+        <div class="avatar" style="background-image: url(&#39;https://hackernoon.com/archive-avatars/ethervolution&#39;)"></div>
+        <div class="name">
+          <strong><a href="https://hackernoon.com/@ethervolution">Salanfe</a></strong>
+          
+          <p>@ethervolution</p>
+          
+          <div class="links">
+            
+            <a target="_blank" href="https://twitter.com/ethervolution"><i class="fab fa-twitter"></i></a>
+            
+            
+            
+            
+          </div>
+        </div>
+      </div>
+      
+
+      <h1 class="title">Setup your own private Proof-of-Authority Ethereum network with Geth</h1>
+      
+      <div class="story-meta">
+        <div class="date">February 7th 2018</div>
+        <div class="share">
+          
+          
+          
+          
+          
+          
+          <a class="twitter" target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?text=Setup%20your%20own%20private%20Proof-of-Authority%20Ethereum%20network%20with%20Geth&amp;url=https%3A%2F%2Fhackernoon.com%2Fsetup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8&amp;via=ethervolution&amp;hashtags=ethereum,geth,proofofauthority"><i class="fab fa-twitter"></i> Tweet This</a>
+        </div>
+      </div>
+      <div class="content" v-pre="">
+        <div class="section-inner sectionLayout--insetColumn"><figure><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill"></div><img data-image-id="1*2DQn4a4Ni5QwzclsUgSJqQ.jpeg" data-width="2647" data-height="842" data-action="zoom" data-action-value="1*2DQn4a4Ni5QwzclsUgSJqQ.jpeg" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/1_2DQn4a4Ni5QwzclsUgSJqQ.jpeg"></div></figure><p>February 2018.</p><p><strong>updates</strong>:</p><ol><li>geth 1.8 was <a href="https://blog.ethereum.org/2018/02/14/geth-1-8-iceberg%C2%B9/" target="_blank">released </a>a few days after this guide was published and fortunately does not break anything. This post is then valid and was tested for both geth 1.7.3 and geth 1.8. Awesome&nbsp;:)</li><li>I’ve learned <em>a posteriori</em> that the gas limit per block is <a href="https://github.com/ethereum/go-ethereum/issues/2185" target="_blank">dynamic</a>. Therefore I’ve updated the section 2.3 to give more information about this particular case. In my private network where blocks are most of the time empty, I don’t what the gas limit to decrease at all&nbsp;!</li><li>Clique requires <code class="markup--code markup--li-code">int(N/2+1)</code> sealers (where N is the number of sealers defined in the genesis file — in <code class="markup--code markup--li-code">extraData</code> field) to be online in order to run.</li><li>thx to <a href="https://medium.com/@aracic" data-anchor-type="2" data-user-id="e7ef0de8aa9c" data-action-value="e7ef0de8aa9c" data-action="show-user-card" data-action-type="hover" target="_blank">Ivica Aracic</a> for pointing out that clique PoA <strong>DOES WORK</strong> with a <strong>single node</strong>. For any reason I missed that and I apologize for the confusion. With a single node, we just need (A) create genesis file with only one sealer (only 1 address in <code class="markup--code markup--li-code">extraData</code> ) (B) create an account (C) init geth (D) run geth, unlock account and mine. No bootnode is required then.</li><li>with geth 1.8 if you get the error “invalid host specified”, try adding the option <code class="markup--code markup--li-code">--rpcvhosts value</code> to the geth command. See <code class="markup--code markup--li-code">geth --help</code></li></ol><p><strong>Goal</strong>: step by step guide to help you setup a local private <a href="https://hackernoon.com/tagged/ethereum" target="_blank">ethereum</a> network using the <em>Proof-of-Authority</em> consensus engine (also named <em>clique</em>).</p><p><strong>In a nutshel</strong>l: we will setup two nodes on the same machine, creating a peer-to-peer network on our localhost. In addition to the two nodes, a bootnode (discovery service) will also be setup.</p><p>It took me quite some time and extensive research and googling to finally have a solid ethereum development environment for testing my smart contracts and my DApps.</p><p>In this post, I’ve decided to share how I am setting a Proof-of-Authority network using the clique consensus engine of Geth. It’s my way to thank the community by giving back and hopefully making life easier for anyone willing exploring the Ethereum universe.</p><h3>OS and&nbsp;Software</h3><p>My OS is Ubuntu 16.04 LTS (this tuto was done in a fresh virtual machine).</p><p>For the Ethereum client, I am using <a href="https://github.com/ethereum/go-ethereum" target="_blank">Geth </a>(the Go implementation of the Ethereum protocole). I believe that Geth is easy to install with plenty of great tutorials out there, so I am not gonna cover any installation here. I am currently running Geth 1.7.3-stable:</p><pre name="35f0" id="35f0" class="graf graf--pre graf-after--p">$ geth version<br>Geth<br>Version: 1.7.3-stable<br>Git Commit: 4bb3c89d44e372e6a9ab85a8be0c9345265c763a<br>Architecture: amd64<br>Protocol Versions: [63 62]</pre><p>and Geth 1.8.1-stable</p><pre name="16ff" id="16ff" class="graf graf--pre graf-after--p">$ geth version<br>Geth<br>Version: 1.8.1-stable<br>Git Commit: 1e67410e88d2685bc54611a7c9f75c327b553ccc<br>Architecture: amd64<br>Protocol Versions: [63 62]</pre><p>I strongly recommend to check the Geth <a href="https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options" target="_blank">Command Line Interface</a> documentation. You’re gonna need it. A lot.</p><h3>1. Let’s get&nbsp;started</h3><h4>1.0 overview</h4><p>Let’s start by the end… For clarity, this is what you are supposed to get when you will have completed Chapter 1.</p><pre name="c818" id="c818" class="graf graf--pre graf-after--p">devnet$ tree -L 2<br>.<br>├── accounts.txt<br>├── boot.key<br>├── genesis.json<br>├── node1<br>│   ├── geth<br>│   ├── keystore<br>│   └── password.txt<br>└── node2<br>    ├── geth<br>    ├── keystore<br>    └── password.txt</pre><h4>1.1 create a workspace</h4><pre name="a7a4" id="a7a4" class="graf graf--pre graf-after--h4">$ mkdir devnet<br>$ cd devnet<br>devnet$ mkdir node1 node2</pre><h4>1.2 create your&nbsp;accounts</h4><p>The accounts (also called wallet) hold a private-public key pair that are required for interacting with any <a href="https://hackernoon.com/tagged/blockchain" target="_blank">blockchain</a>. Any mining node (strictly speaking our nodes will not be mining but voting) needs to be able to sign transactions (using their private key) and to identify itself on the network (the address is derived from the public key). Therefore we need at least two accounts, one per node.</p><p>In Geth jargon, a voting node is called a Sealer.</p><p>for node 1&nbsp;:</p><pre name="463e" id="463e" class="graf graf--pre graf-after--p">devnet$ geth --datadir node1/ account new<br>Your new account is locked with a password. Please give a password. Do not forget this password.<br>Passphrase: pwdnode1 (for example)<br>Repeat passphrase: pwdnode1<br>Address: {87366ef81db496edd0ea2055ca605e8686eec1e6}</pre><p>for node 2&nbsp;:</p><pre name="3a7e" id="3a7e" class="graf graf--pre graf-after--p">devnet$ geth --datadir node2/ account new<br>Your new account is locked with a password. Please give a password. Do not forget this password.<br>Passphrase: pwdnode2 (for example)<br>Repeat passphrase: pwdnode2<br>Address: {08a58f09194e403d02a1928a7bf78646cfc260b0}</pre><p>This creates the <code class="markup--code markup--p-code">keystore/</code> folder containing your account file. Notice that the last part of the file name in <code class="markup--code markup--p-code">keystore/</code> is the address of your account (also printed in the terminal just above).</p><p>I suggest to copy these two addresses from the terminal screen and to save them in a text file. That will ease some copy-pasting job later on. However remember that you can read those addesses from the <code class="markup--code markup--p-code">UTC-datetime-address</code> file in <code class="markup--code markup--p-code">keystore/</code>.</p><pre name="9b67" id="9b67" class="graf graf--pre graf-after--p">devnet$ echo '87366ef81db496edd0ea2055ca605e8686eec1e6' &gt;&gt; accounts.txt<br>devnet$ echo '08a58f09194e403d02a1928a7bf78646cfc260b0' &gt;&gt; accounts.txt</pre><p>For each node, I propose to save your password in a file. That will ease some process for later on (such as unlocking your account)</p><pre name="2b77" id="2b77" class="graf graf--pre graf-after--p">devnet$ echo 'pwdnode1' &gt; node1/password.txt<br>devnet$ echo 'pwdnode2' &gt; node2/password.txt</pre><h4>1.3 create your Genesis&nbsp;file</h4><p>A genesis file is the file used to initialize the blockchain. The very first block, called the genesis block, is crafted based on the parameters in the <code class="markup--code markup--p-code">genesis.json</code> file.</p><p>Geth comes with a bunch of exectuables such as <code class="markup--code markup--p-code">puppeth</code> or <code class="markup--code markup--p-code">bootnode</code>&nbsp;. You can find the complete list on the <a href="https://github.com/ethereum/go-ethereum/tree/master/cmd" target="_blank">Geth github</a>. Puppeth removes the pain of creating a genesis file from scratch (and does much more). Start puppeth&nbsp;:</p><pre name="d5df" id="d5df" class="graf graf--pre graf-after--p">devnet$ puppeth</pre><p>and happily answer the questions (every value can be updated by hand later on, so don’t spent too much time engineering it for your first trials).</p><pre name="9520" id="9520" class="graf graf--pre graf-after--p">Please specify a network name to administer (no spaces, please)<br>&gt; devnet<br>What would you like to do? (default = stats)<br> 1. Show network stats<br> 2. Configure new genesis<br> 3. Track new remote server<br> 4. Deploy network components<br>&gt; 2</pre><pre name="34bd" id="34bd" class="graf graf--pre graf-after--pre">Which consensus engine to use? (default = clique)<br> 1. Ethash - proof-of-work<br> 2. Clique - proof-of-authority<br>&gt; 2</pre><pre name="d034" id="d034" class="graf graf--pre graf-after--pre">How many seconds should blocks take? (default = 15)<br>&gt; 5 // for example</pre><pre name="410d" id="410d" class="graf graf--pre graf-after--pre">Which accounts are allowed to seal? (mandatory at least one)<br>&gt; 0x87366ef81db496edd0ea2055ca605e8686eec1e6 //copy paste from account.txt :)<br>&gt; 0x08a58f09194e403d02a1928a7bf78646cfc260b0</pre><pre name="091e" id="091e" class="graf graf--pre graf-after--pre">Which accounts should be pre-funded? (advisable at least one)<br>&gt; 0x87366ef81db496edd0ea2055ca605e8686eec1e6 // free ethers !<br>&gt; 0x08a58f09194e403d02a1928a7bf78646cfc260b0</pre><pre name="a1c2" id="a1c2" class="graf graf--pre graf-after--pre">Specify your chain/network ID if you want an explicit one (default = random)<br>&gt; 1515 // for example. Do not use anything from 1 to 10</pre><pre name="cbd3" id="cbd3" class="graf graf--pre graf-after--pre">Anything fun to embed into the genesis block? (max 32 bytes)<br>&gt;</pre><pre name="a97a" id="a97a" class="graf graf--pre graf-after--pre">What would you like to do? (default = stats)<br> 1. Show network stats<br> 2. Manage existing genesis<br> 3. Track new remote server<br> 4. Deploy network components<br>&gt; 2</pre><pre name="18c1" id="18c1" class="graf graf--pre graf-after--pre">1. Modify existing fork rules<br> 2. Export genesis configuration<br>&gt; 2</pre><pre name="5a7b" id="5a7b" class="graf graf--pre graf-after--pre">Which file to save the genesis into? (default = devnet.json)<br>&gt; genesis.json<br>INFO [01-23|15:16:17] Exported existing genesis block</pre><pre name="8958" id="8958" class="graf graf--pre graf-after--pre">What would you like to do? (default = stats)<br> 1. Show network stats<br> 2. Manage existing genesis<br> 3. Track new remote server<br> 4. Deploy network components<br>&gt; ^C // ctrl+C to quit puppeth</pre><p><strong><em>Side note</em></strong>&nbsp;: from <a href="https://github.com/ethereum/EIPs/issues/225" target="_blank">Clique PoA EIP#225</a></p><blockquote name="e392" id="e392" class="graf graf--blockquote graf-after--p">PoA doesn’t have mining rewards</blockquote><p>So I would highly suggest that you allocate some ethers (defined in the unit of wei) to a bunch of addresses in the genesis file, otherwise you’ll hand up without any ether and thus will not be able to pay for your transactions. You could have a <code class="markup--code markup--p-code">gasPrice</code> of zero but that sometimes leads to undesired behavior from the nodes that could go under the radar (like not broadcasting pending transaction depending on the config of the other nodes on the network). I encourage you nevertheless to play with every parameter&nbsp;:)</p><h4>1.4 Initialize your&nbsp;nodes</h4><p>Now that we have the <code class="markup--code markup--p-code">genesis.json</code> file, let’s forge the genesis block&nbsp;! Each node <strong>MUST </strong>be initialize with the <strong>SAME </strong>genesis file.</p><pre name="b475" id="b475" class="graf graf--pre graf-after--p">devnet$ geth --datadir node1/ init genesis.json<br>devnet$ geth --datadir node2/ init genesis.json</pre><p>tada&nbsp;! done.</p><p><strong><em>Side note&nbsp;</em></strong>: how does your node know about the genesis parameters when joining the Ethereum Mainnet or the Ropsten testnet, or the Rinkeby testnet&nbsp;? They are already defined in the <a href="https://github.com/ethereum/go-ethereum/blob/master/params/config.go" target="_blank">source code</a> in <code class="markup--code markup--p-code">params/config.go</code>.</p><h4>1.5 Create a&nbsp;bootnode</h4><p>A bootnode only purpose is to helping nodes discovering each others (remember, the Ethereum blockchain is a peer-to-peer network). Nodes could have dynamic IP, being turned off, and on again. The bootnode is usually ran on a static IP and thus acts like a pub where nodes know they will find their mates.</p><p>Initialize the bootnode&nbsp;:</p><pre name="3bd9" id="3bd9" class="graf graf--pre graf-after--p">devnet$ bootnode -genkey boot.key</pre><p>This creates a value called the <code class="markup--code markup--p-code">enode</code> uniquely identifying your bootnode (more on this soon) and we store this enode in the <code class="markup--code markup--p-code">boot.key</code> file.</p><h4>1.6 Midway celebration</h4><p>Congrats&nbsp;! Chapter 1 is done&nbsp;:) try</p><pre name="aa13" id="aa13" class="graf graf--pre graf-after--p">devnet$ tree -L 2</pre><p>and compare the output with the section 1.0. Hopefully you should get the same tree.</p><p>At this point the setup is done and we are ready to make this blockchain live.</p><h3>2. Make it&nbsp;live</h3><h4>2.1 Start the bootnode&nbsp;service</h4><pre name="6037" id="6037" class="graf graf--pre graf-after--h4">devnet$ bootnode -nodekey boot.key -verbosity 9 -addr :30310<br>INFO [02-07|22:44:09] UDP listener up                          self=enode://3ec4fef2d726c2c01f16f0a0030f15dd5a81e274067af2b2157cafbf76aa79fa9c0be52c6664e80cc5b08162ede53279bd70ee10d024fe86613b0b09e1106c40@[::]:30310</pre><p>I like to have some verbosity for my bootnode as it is nice to see when the nodes are playing ping-pong on the network (meaning it’s working!).</p><p>Feel free to use any port you like but please avoid the mainstream ones (like 80 for HTTP). <code class="markup--code markup--p-code">30303</code> is used for the public ethereum networks.</p><h4>2.2 Starting your&nbsp;nodes</h4><p>Big time&nbsp;! Finally (but usually here the troubles arrive too).</p><p>Everything in one huge command&nbsp;! I am gonna cover some options but please do your homework and refer to the <a href="https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options" target="_blank">doc</a>.</p><p>starting node 1</p><pre name="ebd4" id="ebd4" class="graf graf--pre graf-after--p">devnet$ geth --datadir node1/ --syncmode 'full' --port 30311 --rpc --rpcaddr 'localhost' --rpcport 8501 --rpcapi 'personal,db,eth,net,web3,txpool,miner' --bootnodes 'enode://3ec4fef2d726c2c01f16f0a0030f15dd5a81e274067af2b2157cafbf76aa79fa9c0be52c6664e80cc5b08162ede53279bd70ee10d024fe86613b0b09e1106c40@127.0.0.1:30310' --networkid 1515 --gasprice '1' -unlock '0x87366ef81db496edd0ea2055ca605e8686eec1e6' --password node1/password.txt --mine</pre><ul><li><code class="markup--code markup--li-code">--syncmode 'full'</code> helps preventing the error <a href="https://github.com/ethereum/go-ethereum/issues/14945" target="_blank">Discarded Bad Propagated Block</a>.</li><li><code class="markup--code markup--li-code">--port 30311</code> is the enode port for node1 and has to be different from the bootnode port (that is <code class="markup--code markup--li-code">30310</code> if you followed my command) because we are on a localhost. On a real network (one node per machine), use the same port.</li><li><code class="markup--code markup--li-code">--rpcapi</code> allows the listed modules to be used over RPC calls (see section 3.3 for an example). See <a href="https://github.com/ethereum/go-ethereum/wiki/Management-APIs" target="_blank">the Geth Management APIs</a> for more info. Be mindful about hacks as everyone can call your RPC methods if no firewall is protecting your node.</li><li><code class="markup--code markup--li-code">--bootnodes</code> tells your node at what address to find your bootnode. Replace <code class="markup--code markup--li-code">[::]</code> with the bootnode IP. <strong>No domain name are allowed</strong>&nbsp;! Only IPs. <a href="https://github.com/ethereum/wiki/wiki/enode-url-format" target="_blank">Check enode URL format</a>.</li><li><code class="markup--code markup--li-code">--networkId</code> as defined in the <code class="markup--code markup--li-code">genesis.json</code> file. Please use the same id&nbsp;!</li><li><code class="markup--code markup--li-code">--gasprice '1'</code> I don’t like to pay on my own network&nbsp;:) be careful with gasprice. If your transactions are not being broadcasted to the network but only the node receiving the transactions is processing them, this means you sent a transaction with a gasprice that is not accepted (too low) by the other nodes on the network. No error will be return. If you have two nodes, only one will be processing the transactions. This is sneaky and reduces your network throughput by a factor 2.</li><li><code class="markup--code markup--li-code">--unlock</code> <code class="markup--code markup--li-code">--password</code> <code class="markup--code markup--li-code">--mine</code> tell the node to unlock this account, with the password in that file and to start mining (i.e. voting/sealing for Proof-of-Authority)</li><li><code class="markup--code markup--li-code">--targetgaslimit value</code> see the <strong>update </strong>in section 2.3.</li></ul><p>same for node 2 (update parameters specific to the node)</p><pre name="8617" id="8617" class="graf graf--pre graf-after--p">devnet$ geth --datadir node2/ --syncmode 'full' --port 30312 --rpc --rpcaddr 'localhost' --rpcport 8502 --rpcapi 'personal,db,eth,net,web3,txpool,miner' --bootnodes 'enode://3ec4fef2d726c2c01f16f0a0030f15dd5a81e274067af2b2157cafbf76aa79fa9c0be52c6664e80cc5b08162ede53279bd70ee10d024fe86613b0b09e1106c40@127.0.0.1:30310' --networkid 1515 --gasprice '0' --unlock '0x08a58f09194e403d02a1928a7bf78646cfc260b0' --password node2/password.txt --mine</pre><p>At this point your bootnode should stream connections coming from node1 (port 30311) and node2 (port 30312) as shown in the upper terminal window. Node1 (middle terminal) and node2 (lower terminal) should be happily mining and signing blocks. Here I have a period of 1 second (defined in the genesis file) therefore the fast block creation.</p></div><div class="section-inner sectionLayout--outsetColumn"><figure><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill"></div><img data-image-id="1*bLjJkNTRxbqnGhzW8Fdt4w.png" data-width="1206" data-height="924" data-action="zoom" data-action-value="1*bLjJkNTRxbqnGhzW8Fdt4w.png" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/1_bLjJkNTRxbqnGhzW8Fdt4w.png"></div></figure></div><div class="section-inner sectionLayout--insetColumn"><h4>2.3 Update your genesis&nbsp;file</h4><p>I am sure you’ll want to modify some values in your genesis file. Go ahead&nbsp;! However in order for those changes to become effective, we have to initialize a new blockchain. Here is the genesis file I am currently using&nbsp;:</p><pre name="5166" id="5166" class="graf graf--pre graf-after--p">{<br>    "config": {<br>        "chainId": 1515,<br>        "homesteadBlock": 1,<br>        "eip150Block": 2,<br>        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",<br>        "eip155Block": 3,<br>        "eip158Block": 3,<br>        "byzantiumBlock": 4,<br>        "clique": {<br>            "period": 1,<br>            "epoch": 30000<br>        }<br>    },<br>    "nonce": "0x0",<br>    "timestamp": "0x5a722c92",<br>    "extraData": "0x000000000000000000000000000000000000000000000000000000000000000008a58f09194e403d02a1928a7bf78646cfc260b087366ef81db496edd0ea2055ca605e8686eec1e60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",<br>    "gasLimit": "0x59A5380",<br>    "difficulty": "0x1",<br>    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",<br>    "coinbase": "0x0000000000000000000000000000000000000000",<br>    "alloc": {<br>        "08a58f09194e403d02a1928a7bf78646cfc260b0": {<br>            "balance": "0x200000000000000000000000000000000000000000000000000000000000000"<br>        },<br>        "87366ef81db496edd0ea2055ca605e8686eec1e6": {<br>            "balance": "0x200000000000000000000000000000000000000000000000000000000000000"<br>        },<br>        "F464A67CA59606f0fFE159092FF2F474d69FD675": {<br>            "balance": "0x200000000000000000000000000000000000000000000000000000000000000"<br>        }<br>    },<br>    "number": "0x0",<br>    "gasUsed": "0x0",<br>    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"<br>}</pre><p>I’ve cleaned the empty addresses that puppeth includes when creating the file (at section 1.3). I’ve also added a third address that gets funded when the genesis block is created. Then I have changed the <code class="markup--code markup--p-code">period</code> from 15 second to 1 to get those blocks mined faster (be careful as one empty block weights 1024 bytes — here my <code class="markup--code markup--p-code">chaindata/</code> folder gains 1024 bytes per second (and more if the blocks are not empty). Finally I’ve increased the <code class="markup--code markup--p-code">gasLimit</code> to allow for more transaction (trully speaking, computation) per block.</p><p><strong>update</strong>: The <code class="markup--code markup--p-code">gasLimit</code> defined in the genesis file only applies to the genesis block&nbsp;! The <code class="markup--code markup--p-code">gasLimit</code> of new blocks is <a href="https://github.com/ethereum/go-ethereum/issues/2185" target="_blank"><strong>DYNAMIC </strong></a>meaning its value is changing over time depending on how much gas was used in the parent (previous) block. The computation of the new <code class="markup--code markup--p-code">gasLimit</code> is done in the function <code class="markup--code markup--p-code">CalcGasLimit</code> (<a href="https://github.com/ethereum/go-ethereum/blob/master/core/block_validator.go#L106" target="_blank">github source</a>). If you want a constant gas Limit use the <a href="https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options" target="_blank">option </a><code class="markup--code markup--p-code">--targetgaslimit intValue</code> when running geth. I would recommend to set it equal to the <code class="markup--code markup--p-code">gasLimit</code> in the genesis file (the command option is an integer whereas the genesis value is hexadecimal) so that you get a constant gas limit that does not change over time anymore. Given the genesis file above with <code class="markup--code markup--p-code">"gasLimit":"0x59A5380"</code>&nbsp;, I am running my node with <code class="markup--code markup--p-code">--targetgaslimit 94000000</code> for a constant gas limit across all blocks.</p><p>The field <code class="markup--code markup--p-code">extraData</code> contains the address that are allowed to seal (that’s why puppeth is nice to have).</p><p>I have investigate the impact of changing the <code class="markup--code markup--p-code">period</code> and the <code class="markup--code markup--p-code">gasLimit</code> on the number of transaction per second (transaction rate) that the blockchain can process. But that’s gonna be another article; link here.</p><p>When you are happy with your genesis file. Kill your nodes if they are running (ctrl C in the terminal). Then delete the folder <code class="markup--code markup--p-code">geth/</code> in <code class="markup--code markup--p-code">node1/</code> and <code class="markup--code markup--p-code">geht/</code> in <code class="markup--code markup--p-code">node2/</code>&nbsp;. Delete only <code class="markup--code markup--p-code">geth/</code> folders!</p><p>Then initialize your nodes. From section 1.4&nbsp;:</p><pre name="fec0" id="fec0" class="graf graf--pre graf-after--p">devnet$ geth --datadir node1/ init genesis.json<br>devnet$ geth --datadir node2/ init genesis.json</pre><p>and start your nodes again with the commands in section 2.2</p><h3>3. Interact with your&nbsp;nodes</h3><p>Great your network is now live&nbsp;:) but how to connect to it and starting exploring&nbsp;?</p><h4>3.1 Open a Geth Javascript Console</h4><p>The simplest and probably more straight forward way to play with a node is probably to attach a <a href="https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console" target="_blank">Geth javascript console</a> to one of the nodes.</p><h4>3.1.1 Through&nbsp;IPC</h4><p>IPC (<a href="https://en.wikipedia.org/wiki/Inter-process_communication" target="_blank"><strong>I</strong>nter-<strong>P</strong>rocess <strong>C</strong>ommunication</a>) works only locally&nbsp;: you should be on the same machine as your node. Open an extra terminal and attach to your node. To connect to node1&nbsp;:</p><pre name="ee69" id="ee69" class="graf graf--pre graf-after--p">$ cd devnet<br>devnet$ geth attach node1/geth.ipc<br>Welcome to the Geth JavaScript console!</pre><pre name="3534" id="3534" class="graf graf--pre graf-after--pre">instance: Geth/v1.7.3-stable-4bb3c89d/linux-amd64/go1.9<br>coinbase: 0x87366ef81db496edd0ea2055ca605e8686eec1e6<br>at block: 901 (Sat, 10 Feb 2018 21:15:30 CET)<br> datadir: /home/salanfe/privateNetworks/devnet/node1<br> modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0</pre><pre name="e28e" id="e28e" class="graf graf--pre graf-after--pre">&gt;</pre><p>The file <code class="markup--code markup--p-code">geth.ipc</code> is created only when the node is running. So do not expect to find it if your node1 is off.</p><p>RPC gives access without restriction to all modules listed in the terminal&nbsp;: <code class="markup--code markup--p-code">admin: 1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0</code></p><h4>3.1.2 Through&nbsp;RPC</h4><p>RPC (<a href="https://en.wikipedia.org/wiki/Remote_procedure_call" target="_blank"><strong>R</strong>emote <strong>P</strong>rocedure <strong>C</strong>all</a>) works over the internet as HTTP requests. Therefore be careful when you open RPC to the outside world as everyone will have access to your node. For this reason RPC is disabled by default and when enabled it does not give access to all modules. In this guide we allowed RPC on our Geth node with the command <code class="markup--code markup--p-code">--rpc</code> and gave access to the modules <code class="markup--code markup--p-code">personal,db,eth,net,web3,txpool,miner</code> (from section 2.2). To connect to node1 using RPC&nbsp;:</p><pre name="31c3" id="31c3" class="graf graf--pre graf-after--p">$ cd devnet<br>devnet$ geth attach 'http://localhost:8501'<br>Welcome to the Geth JavaScript console!</pre><pre name="bcdf" id="bcdf" class="graf graf--pre graf-after--pre">instance: Geth/v1.7.3-stable-4bb3c89d/linux-amd64/go1.9<br>coinbase: 0x87366ef81db496edd0ea2055ca605e8686eec1e6<br>at block: 945 (Sat, 10 Feb 2018 21:16:14 CET)<br> modules: eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0</pre><pre name="6cfb" id="6cfb" class="graf graf--pre graf-after--pre">&gt;</pre><h4>3.1.3 Using the Geth Javascript Console</h4><p>Here are some examples of methods</p><pre name="0df7" id="0df7" class="graf graf--pre graf-after--p">&gt; net.version<br>"1515"<br>&gt; eth.blockNumber<br>1910<br>&gt; eth.coinbase<br>"0x87366ef81db496edd0ea2055ca605e8686eec1e6"<br>&gt; eth.sendTransaction({'from':eth.coinbase, 'to':'0x08a58f09194e403d02a1928a7bf78646cfc260b0', 'value':web3.toWei(3, 'ether')})<br>"0x299a99baa1b39bdee5f02e3c660e19e744f81c2e886b5fc24aa83f92fe100d3f"<br>&gt; eth.getTransactionReceipt("0x299a99baa1b39bdee5f02e3c660e19e744f81c2e886b5fc24aa83f92fe100d3f")<br>{<br>  blockHash: "0x212fb593980bd42fcaf3f6d1e6db2dd86d3764df8cac2d90408f481ae7830de8",<br>  blockNumber: 2079,<br>  contractAddress: null,<br>  cumulativeGasUsed: 21000,<br>  from: "0x87366ef81db496edd0ea2055ca605e8686eec1e6",<br>  gasUsed: 21000,<br>  logs: [],<br>  logsBloom: "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",<br>  status: "0x1",<br>  to: "0x08a58f09194e403d02a1928a7bf78646cfc260b0",<br>  transactionHash: "0x299a99baa1b39bdee5f02e3c660e19e744f81c2e886b5fc24aa83f92fe100d3f",<br>  transactionIndex: 0<br>}<br>&gt; exit // to quit the Geth javascript console</pre><p>for the full list of methods, see <a href="https://github.com/ethereum/go-ethereum/wiki/Management-APIs" target="_blank">Management APIs</a> and <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC" target="_blank">JSON RPC API</a>.</p><h4>3.2 Using&nbsp;Mist</h4><p>The <a href="https://github.com/ethereum/mist" target="_blank">Mist browser</a> provides a graphical user interface for deploying and interacting with smart contracts and managing accounts. To connect Mist to your local private network over IPC, simply do&nbsp;:</p><pre name="7562" id="7562" class="graf graf--pre graf-after--p">devnet$ mist --rpc node1/geth.ipc</pre><p>and over RPC (make sure RPC is enabled)</p><pre name="d116" id="d116" class="graf graf--pre graf-after--p">$ mist --rpc 'http://localhost:8501'</pre><p>The procedure is exactly the same if you want to use the <a href="https://github.com/ethereum/mist/releases" target="_blank">Ethereum wallet</a> instead of mist. Just replace mist by <code class="markup--code markup--p-code">ethereumwallet</code> in the commands above.</p><h4>3.3 Making RPC calls with your favorite programming language</h4><p>In section 3.1, we saw how to interact with the Geth API by hand. Now let’s use our PC for what it is best at&nbsp;: automation.</p><p>The reference and by far for sending JSON-RPC requests to your node is the <a href="https://github.com/ethereum/web3.js/" target="_blank">web3.js</a> javascript library. I believe the internet of full of great tutorial and example on how to use the web3.js library. Therefore I am not gonna covert any of it here.</p><p>The JSON-RPC APIs are currently also being implemented in java with the <a href="https://github.com/web3j/web3j" target="_blank">web3.j</a> library and in python with the<a href="https://github.com/ethereum/web3.py" target="_blank"> web3.py</a> library. Those libraries offer high-level methods for working with the ethereum blockchain just like web3.js.</p><p>However, it’s also possible to send raw <a href="http://www.jsonrpc.org/specification" target="_blank">JSON-RPC</a> requests directly to your node. I think it is worth trying as it’s providing a valuable understanding on how those high-level libraries work under the hood.</p><p>Here is a simple example of sending a raw JSON-RPC request to my node using python 3&nbsp;:</p><pre name="b1e2" id="b1e2" class="graf graf--pre graf-after--p">$ python<br>Python 3.6.4 |Anaconda custom (64-bit)| (default, Jan 16 2018, 18:10:19) <br>[GCC 7.2.0] on linux<br>Type "help", "copyright", "credits" or "license" for more information.<br>&gt;&gt;&gt; import requests<br>&gt;&gt;&gt; import json<br>&gt;&gt;&gt; session = requests.Session()<br>&gt;&gt;&gt; method = 'eth_getTransactionCount'<br>&gt;&gt;&gt; params = ["0x627306090abaB3A6e1400e9345bC60c78a8BEf57","latest"]<br>&gt;&gt;&gt; PAYLOAD = {"jsonrpc":"2.0",<br>...            "method":method,<br>...            "params":params,<br>...            "id":67}<br>&gt;&gt;&gt; PAYLOAD = json.dumps(PAYLOAD)<br>&gt;&gt;&gt; headers = {'Content-type': 'application/json'}<br>&gt;&gt;&gt; response = session.post('<a href="http://127.0.0.1:8501%27/" target="_blank">http://127.0.0.1:8501'</a>, data=PAYLOAD, headers=headers)<br>&gt;&gt;&gt; response.content<br>b'{"jsonrpc":"2.0","id":67,"result":"0x0"}\n'<br>&gt;&gt;&gt; json.loads(response.content)['result']<br>'0x0'</pre><p>The method <code class="markup--code markup--p-code">geth_transactionCount</code> is documented <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_gettransactioncount" target="_blank">here</a>.</p><p>The “account” <a href="https://github.com/ethereum/wiki/wiki/Glossary" target="_blank">nonce</a> is a transaction counter and has nothing to do with the nonce for Proof-of-Work. A account nonce of zero means that the address <code class="markup--code markup--p-code">0x627306090abaB3A6e1400e9345bC60c78a8BEf57</code> never did any transaction on the network&nbsp;: <code class="markup--code markup--p-code">0x0</code> is the hexadecimal representation of zero.</p><h4>3.4 Deploy and test your smart contracts with Truffle on your private&nbsp;network</h4><p>Development frameworks like <a href="http://truffleframework.com/" target="_blank">Truffle</a> (or <a href="https://github.com/iurimatias/embark-framework" target="_blank">Embark</a>, <a href="https://github.com/ethereum/populus" target="_blank">Populus</a>) are great tools for developing and testing smart contracts.</p><p>When you initialize a workspace with</p><pre name="0d80" id="0d80" class="graf graf--pre graf-after--p">$ truffle init</pre><p>Truffle creates a series of files and folders to help you get started. I usually edit the <code class="markup--code markup--p-code">truffle.js</code> file as such</p><pre name="39cb" id="39cb" class="graf graf--pre graf-after--p">module.exports = {<br>    // See &lt;<a href="http://truffleframework.com/docs/advanced/configuration" target="_blank">http://truffleframework.com/docs/advanced/configuration</a>&gt;<br>    // to customize your Truffle configuration!<br>    networks: {<br>        devnet: {<br>            host: '127.0.0.1',<br>            port: 8501,<br>            network_id: '*'<br>        },<br>        ganache: {<br>            host: '127.0.0.1',<br>            port: 7545,<br>            network_id: '*'<br>        }<br>    }<br>};</pre><p>then use the command</p><pre name="9c7e" id="9c7e" class="graf graf--pre graf-after--p">$ truffle deploy --network devnet</pre><p>to deploy your smart contracts defined in <code class="markup--code markup--p-code">migrations/X_deploy.js</code>&nbsp;. Or for running your tests in <code class="markup--code markup--p-code">test/</code></p><pre name="cac4" id="cac4" class="graf graf--pre graf-after--p">$ truffle test --network devnet</pre><p>Usually the Ethereum Blockchain simulator <a href="http://truffleframework.com/ganache/" target="_blank">Ganache</a> is more than enough for running your tests. However I like to use my private blockchain for ultimate testing on a real node and not only on a simulator. With Ganache I believe that the layer of abstraction is too big, what is the beauty of it but also a danger as it requires no understanding what so ever of the complexity of a real node (transaction pool, gasPrice, gasLimit, broadcasting transactions between nodes, mining or voting, computation time, consensus engine, etc.).</p><h3>What’s next&nbsp;?</h3><p>That’s pretty much it for this guide. If you understand everything here I believe you’re already on very good tracks and you have a solid foundation on which you can continue your journey with confidence.</p><p>You can start developing <a href="https://www.stateofthedapps.com/whats-a-dapp" target="_blank">Dapps </a>(Decentralized Applications) by grabbing a web3 library or by making your own custom <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC" target="_blank">JSON-RPC</a> wrapper.</p><p>In <a href="https://medium.com/@ethervolution/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9" target="_blank">this post</a>, I explore how to use python for deploying and transacting with a smart contract using only raw HTTP requests.</p><div class="graf graf--mixtapeEmbed graf-after--p"><a href="https://medium.com/@ethervolution/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9" title="https://medium.com/@ethervolution/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9"><strong>Ethereum: create raw JSON-RPC requests with Python for deploying and transacting with a smart…</strong><br><em>February 2018.</em>medium.com</a><a href="https://medium.com/@ethervolution/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9" data-media-id="47e58ebeadbe716060339594316f8774" data-thumbnail-img-id="1*RuVesmJPp8yBH1ghMBJWow.jpeg"></a></div><h3>Final Words</h3><p>Congratulation if you made it until the end. I hope this guide is comprehensive and helped you on your journey. I welcome any feedback to improve this guide&nbsp;!</p><p>And a BIG Thank you to the community for all the documentation, tutorials, Q&amp;A websites and guides out there.</p><p>Happy Hacking&nbsp;!</p><figure><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill"></div></div></figure></div>
+        
+        <div class="archive-tags">
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/ethereum">Ethereum</a>
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/geth">Geth</a>
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/proof-of-authority">Proof Of Authority</a>
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/web3">Web3</a>
+          
+        </div>
+        
+
+        <div class="twitter-discussion">
+          <a target="_blank" href="https://twitter.com/search?q=https%3A%2F%2Fhackernoon.com%2Fsetup-your-own-private-proof-of-authority-ethereum-network-with-geth-9a0a3750cda8">Continue the discussion <i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      
+    </div>
+
+
+    <div class="more">
+      
+      <div class="divider-title">
+        <div class="divider"></div>
+        <h1 class="more-heading">More by Salanfe</h1>
+        <div class="divider"></div>
+      </div>
+
+      <div class="more-content">
+        
+        
+        <div class="story-card">
+          <a href="https://hackernoon.com/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9">
+            
+            
+            <div class="img" style="background-image: url(&#39;https://hackernoon.com/hn-images/1*RuVesmJPp8yBH1ghMBJWow.jpeg&#39;)"></div>
+          </a>
+          <div class="excerpt">
+            <div class="title">
+              <a href="https://hackernoon.com/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9">Ethereum: create raw JSON-RPC requests with Python for deploying and transacting with a smart…</a>
+            </div>
+            <div class="bio">
+              <div class="flex">
+                <div class="avatar" style="background-image: url(&#39;https://hackernoon.com/archive-avatars/ethervolution&#39;)"></div>
+                <div>
+                  <a href="https://hackernoon.com/@ethervolution" class="name">Salanfe</a>
+                  <div class="published">Feb 14</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/ethereum">Ethereum</a>
+          
+        </div>
+        
+        
+        
+        <div class="story-card">
+          <a href="https://hackernoon.com/ethereum-smart-contract-upgradeability-hands-on-ceaf98be070f">
+            
+            
+            <div class="img" style="background-image: url(&#39;https://hackernoon.com/hn-images/1*cfyyFQ5Y2fE_SXpGoTkSGA.jpeg&#39;)"></div>
+          </a>
+          <div class="excerpt">
+            <div class="title">
+              <a href="https://hackernoon.com/ethereum-smart-contract-upgradeability-hands-on-ceaf98be070f">Ethereum Smart Contract Upgradeability: Hands-On</a>
+            </div>
+            <div class="bio">
+              <div class="flex">
+                <div class="avatar" style="background-image: url(&#39;https://hackernoon.com/archive-avatars/ethervolution&#39;)"></div>
+                <div>
+                  <a href="https://hackernoon.com/@ethervolution" class="name">Salanfe</a>
+                  <div class="published">Apr 27</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/ethereum">Ethereum</a>
+          
+        </div>
+        
+        
+        
+        
+        
+        <div class="story-spacer"></div>
+      </div>
+      
+
+      <div id="subscribe-embed">
+        <!-- Begin Mailchimp Signup Form -->
+        <div id="mc_embed_signup">
+          <img class="signup-image" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/0b8733f3-c1e1-4a69-9dc4-57b3407f333f.png" alt="">
+          <form action="https://hackernoon.us19.list-manage.com/subscribe/post?u=b48b0ec2173fecf2586c00e80&amp;id=fa796741e6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="novalidate">
+            <div class="subscribe-header">
+              <h2>Hackernoon Newsletter curates great stories by real tech professionals</h2>
+              <p>Get solid gold sent to your inbox. Every week!</p>
+            </div>
+            <div class="mc-field-group">
+        
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address *" aria-required="true">
+            </div>
+            <div class="fields-group">
+              <div class="mc-field-group">
+                <input type="text" value="" name="MMERGE1" class="" id="mce-MMERGE1" placeholder="First Name">
+              </div>
+              <div class="mc-field-group">
+                <input type="text" value="" name="MMERGE2" class="" id="mce-MMERGE2" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="mc-field-group input-group topics-list">
+              <strong>Topics of interest </strong>
+              <ul><li class="checkbox"><input checked="" type="checkbox" value="1" name="group[3757][1]" id="mce-group[3757]-3757-0"><label for="mce-group[3757]-3757-0">Software Development</label></li>
+                <li class="checkbox"><input checked="" type="checkbox" value="2" name="group[3757][2]" id="mce-group[3757]-3757-1"><label for="mce-group[3757]-3757-1">Blockchain Crypto</label></li>
+                <li class="checkbox"><input checked="" type="checkbox" value="4" name="group[3757][4]" id="mce-group[3757]-3757-2"><label for="mce-group[3757]-3757-2">General Tech</label></li>
+                <li class="checkbox"><input checked="" type="checkbox" value="8" name="group[3757][8]" id="mce-group[3757]-3757-3"><label for="mce-group[3757]-3757-3">Best of Hacker Noon</label></li>
+              </ul>
+            </div>
+            <div id="mce-responses" class="clear">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b48b0ec2173fecf2586c00e80_fa796741e6" tabindex="-1" value=""></div>
+            <div class="submit-btn"><input type="submit" value="Get great stories by email" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+          </form>
+        </div>
+        <!--End mc_embed_signup-->
+      </div>
+
+      
+      <div class="divider-title">
+        <div class="divider"></div>
+        <h1 class="more-heading">More Related Stories</h1>
+        <div class="divider"></div>
+      </div>
+
+      <div class="more-content">
+        
+        <div class="story-card">
+          <a href="https://hackernoon.com/%C2%B5raiden-micropayments-for-ethereum-f0756cd400b3">
+            
+            
+            <div class="img" style="background-image: url(&#39;https://hackernoon.com/hn-images/1*0iDcNsqL4thxJ6D02bnfLw.jpeg&#39;)"></div>
+          </a>
+          <div class="excerpt">
+            <div class="title">
+              <a href="https://hackernoon.com/%C2%B5raiden-micropayments-for-ethereum-f0756cd400b3">µRaiden: Micropayments for Ethereum</a>
+            </div>
+            <div class="bio">
+              <div class="flex">
+                <div class="avatar" style="background-image: url(&#39;https://hackernoon.com/archive-avatars/raiden_network&#39;)"></div>
+                <div>
+                  <a href="https://hackernoon.com/@raiden_network" class="name">Raiden Network</a>
+                  <div class="published">Sep 19</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/ethereum">Ethereum</a>
+          
+        </div>
+        
+        <div class="story-card">
+          <a href="https://hackernoon.com/10-tools-for-blockchain-development-67f862a03a36">
+            
+            
+            <div class="img" style="background-image: url(&#39;https://hackernoon.com/hn-images/1*S5v3Um9dgYYz0s2F8muY-Q.jpeg&#39;)"></div>
+          </a>
+          <div class="excerpt">
+            <div class="title">
+              <a href="https://hackernoon.com/10-tools-for-blockchain-development-67f862a03a36">10 Tools for Blockchain Development</a>
+            </div>
+            <div class="bio">
+              <div class="flex">
+                <div class="avatar" style="background-image: url(&#39;https://hackernoon.com/archive-avatars/dashbouquet&#39;)"></div>
+                <div>
+                  <a href="https://hackernoon.com/@dashbouquet" class="name">DashMagazine</a>
+                  <div class="published">Jan 16</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/ethereum">Ethereum</a>
+          
+        </div>
+        
+        <div class="story-card">
+          <a href="https://hackernoon.com/4-signals-that-explain-how-businesses-are-adopting-blockchain-7204ba901140">
+            
+            
+            <div class="img" style="background-image: url(&#39;https://hackernoon.com/hn-images/1*_8NOZVqpSrg2mxgAKvzvvw.png&#39;)"></div>
+          </a>
+          <div class="excerpt">
+            <div class="title">
+              <a href="https://hackernoon.com/4-signals-that-explain-how-businesses-are-adopting-blockchain-7204ba901140">4 Signals That Explain How Businesses Are Adopting Blockchain</a>
+            </div>
+            <div class="bio">
+              <div class="flex">
+                <div class="avatar" style="background-image: url(&#39;https://hackernoon.com/archive-avatars/sparkystacey&#39;)"></div>
+                <div>
+                  <a href="https://hackernoon.com/@sparkystacey" class="name">Stacey Schneider</a>
+                  <div class="published">Mar 22</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <a class="tag" href="https://hackernoon.com/tagged/blockchain">Blockchain</a>
+          
+        </div>
+        
+        
+        <div class="story-spacer"></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="subnav footer">
+    <a href="https://www.hackernoon.com/"><img class="footer__logo" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/hn-logo.png" width="45" height="45"></a>
+    <div>
+      <div class="footer__links">
+        <a href="http://help.hackernoon.com/">Help</a>
+        <a href="https://hackernoon.com/hacker-noon-faqs-with-six-word-answers-aw1ls3z1q">About</a>
+        <a href="https://community.hackernoon.com/session/sso?return_path=https%3A%2F%2Fapp.hackernoon.com">Start Writing</a>
+        <a class="footer__sponsor" href="http://sponsor.hackernoon.com/">Sponsor:</a>
+        <a class="footer__sponsor-type" href="https://sponsor.hackernoon.com/#brandasauthor">Brand-as-Author</a>
+        <a class="footer__sponsor-type" href="https://sponsor.hackernoon.com/#billboard">Sitewide Billboard</a>
+      </div>
+      <div class="footer__privacy-links">
+        <a href="mailto:support@hackernoon.com">Contact Us</a>
+        <a href="http://privacy.hackernoon.com/">Privacy</a>
+        <a href="http://terms.hackernoon.com/">Terms</a>
+      </div>
+    </div>
+    <div>
+      <a href="https://twitter.com/hackernoon" rel="noopener noreferrer" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.facebook.com/hackernoon" rel="noopener noreferrer" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/company/hackernoon/" rel="noopener noreferrer" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.youtube.com/hackernoon" rel="noopener noreferrer" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/firebase-app.js.download"></script>
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/firebase-auth.js.download"></script>
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/firebase-firestore.js.download"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCjRAcAgsxlffnuZNIr4zOGaIsEKKEaJCg",
+    authDomain: "hackernoon-app.firebaseapp.com",
+    databaseURL: "https://hackernoon-app.firebaseio.com",
+    projectId: "hackernoon-app",
+    storageBucket: "hackernoon-app.appspot.com",
+    messagingSenderId: "521962009898"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/js.cookie.min.js.download"></script>
+
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/interact-archive.js.download"></script>
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/prism.js.download"></script>
+  <script>window.upsettings = {'api_key': '24b4421e-81ec-0b84b6a2'}</script><script>(function(){var w=window;var up=w.Upscribe;if(typeof up==="function"){up('reattach_activator');up('update',upsettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Upscribe=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://upscri.be/js/snippet.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if( w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/js"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'UA-65623566-4');
+  </script>
+  <script async="" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/services.js.download"></script>
+  <script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/subscribeform.js.download"></script>
+  <script async="" src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/mc-validate.js.download"></script>
+
+
+<script src="./Setup your own private Proof-of-Authority Ethereum network with Geth - By_files/annotate.js.download"></script></body></html>

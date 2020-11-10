@@ -4,6 +4,7 @@ litecoin/litecoind
 Ethereum/bin
 Ethereum/devnet/node1/geth
 Ethereum/devnet/node2/geth
+Ethereum/devnet/boot.key
 monacoin/monacoind
 dogecoin/dogecoind
 bgold/bgoldd
